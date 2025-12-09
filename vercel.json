@@ -1,0 +1,10 @@
+{
+  "headers": [
+    {
+      "source": "/admin/:path*",
+      "headers": [
+        { "key": "x-vercel-disable-insights", "value": "1" }
+      ]
+    }
+  ]
+}
