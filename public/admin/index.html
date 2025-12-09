@@ -1,27 +1,15 @@
 <!doctype html>
-<html>
+<html lang="en">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>SAIG Admin Dashboard</title>
 
-    <!-- Load Decap CMS (includes OAuth support) -->
-    <script src="https://unpkg.com/decap-cms@^3.9.0/dist/decap-cms.js"></script>
+    <!-- Load Decap CMS -->
+    <script src="https://unpkg.com/decap-cms@latest/dist/decap-cms.js"></script>
   </head>
 
   <body>
-    <!-- CMS container -->
-    <div id="nc-root"></div>
-
-    <script>
-      window.addEventListener("load", () => {
-        // This is all CMS needs to start
-        if (window.CMS) {
-          CMS.init();
-        } else {
-          console.error("CMS failed to load");
-        }
-      });
-    </script>
+    <!-- Decap CMS mounts automatically — no custom container -->
   </body>
 </html>
