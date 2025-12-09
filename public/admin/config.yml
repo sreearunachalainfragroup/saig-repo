@@ -1,0 +1,37 @@
+# Vercel CMS Configuration (GitHub OAuth)
+backend:
+  name: github
+  repo: sreearunachalainfragroup/saig-vercel-repo
+  branch: main
+  auth_type: oauth
+  base_url: https://saig-oauth-server.vercel.app
+  auth_endpoint: auth
+  token_endpoint: callback
+  use_graphql: false
+
+publish_mode: editorial_workflow
+
+media_folder: "assets/uploads"
+public_folder: "/assets/uploads"
+
+collections:
+  - name: "about"
+    label: "Our Story"
+    folder: "content/about"
+    create: false
+    slug: "our-story"
+    fields:
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Content", name: "body", widget: "markdown" }
+
+  - name: "projects"
+    label: "Projects"
+    folder: "content/projects"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "Project Title", name: "title", widget: "string" }
+      - { label: "Category", name: "category", widget: "string" }
+      - { label: "Location", name: "location", widget: "string" }
+      - { label: "Description", name: "body", widget: "markdown" }
+      - { label: "Image", name: "image", widget: "image" }
