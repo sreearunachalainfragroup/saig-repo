@@ -1,25 +1,4 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <title>Plot Availability</title>
-  <link rel="stylesheet" href="assets/css/style.css">
-  <style>
-    svg { width: 100%; height: auto; }
-    .plot { stroke: #333; stroke-width: 1; cursor: pointer; }
-  </style>
-</head>
-
-<body>
-
-<h2>Solaris Meadows - Plot Availability</h2>
-
-<h3>
-🟢 Available &nbsp;&nbsp;
-🟡 Reserved &nbsp;&nbsp;
-🔴 Sold
-</h3>
-
-<!-- SVG LAYOUT -->
+<?xml version="1.0" encoding="UTF-8"?>
 <svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 612 385.92">
   <defs>
     <style>
@@ -40,11 +19,11 @@
         stroke: #6abd45;
       }
 
-      .cls-4, .cls-5, .cls-6, .cls-7, .plot, .cls-9, .cls-10, .cls-11, .cls-12, .cls-13, .cls-14, .cls-15, .cls-16, .cls-17, .cls-18, .cls-19 {
+      .cls-4, .cls-5, .cls-6, .cls-7, .cls-8, .cls-9, .cls-10, .cls-11, .cls-12, .cls-13, .cls-14, .cls-15, .cls-16, .cls-17, .cls-18, .cls-19 {
         stroke-linecap: round;
       }
 
-      .cls-4, .cls-5, .cls-6, .cls-7, .plot, .cls-9, .cls-10, .cls-11, .cls-12, .cls-13, .cls-14, .cls-15, .cls-17, .cls-19 {
+      .cls-4, .cls-5, .cls-6, .cls-7, .cls-8, .cls-9, .cls-10, .cls-11, .cls-12, .cls-13, .cls-14, .cls-15, .cls-17, .cls-19 {
         stroke-linejoin: round;
       }
 
@@ -56,7 +35,7 @@
         stroke-width: .04px;
       }
 
-      .cls-5, .plot {
+      .cls-5, .cls-8 {
         stroke: #405caa;
         stroke-width: .26px;
       }
@@ -77,7 +56,7 @@
         stroke: #6ec287;
       }
 
-      .plot {
+      .cls-8 {
         fill: #fff;
       }
 
@@ -147,55 +126,55 @@
     </style>
   </defs>
   <g>
-    <rect id="plot-37" class="plot" x="43.83" y="142.37" width="31.17" height="31.17" transform="translate(-109.04 168.19) rotate(-72.86)"/>
-    <polygon id="plot-36" class="plot" points="113.06 107.61 104.89 134.09 134.68 143.27 142.83 116.8 113.06 107.61"/>
-    <polygon id="plot-35" class="plot" points="119.18 87.76 113.06 107.61 142.83 116.8 148.96 96.95 119.18 87.76"/>
-    <rect id="plot-34" class="plot" x="126.74" y="66.84" width="20.78" height="31.17" transform="translate(17.97 189.19) rotate(-72.87)"/>
-    <polygon id="plot-33" class="plot" points="131.43 48.05 125.3 67.91 155.08 77.09 161.2 57.24 131.43 48.05"/>
-    <polygon id="plot-32" class="plot" points="161.2 57.24 167.59 36.52 160.9 34.47 137.78 27.41 131.43 48.05 161.2 57.24"/>
-    <rect id="plot-31" class="plot" x="141.43" y="117.66" width="27.7" height="34.63" transform="translate(-19.43 243.63) rotate(-72.88)"/>
-    <rect id="plot-30" class="plot" x="152.03" y="94.5" width="20.78" height="34.63" transform="translate(7.67 234.02) rotate(-72.84)"/>
-    <rect id="plot-29" class="plot" x="158.16" y="74.65" width="20.78" height="34.63" transform="translate(31.02 225.94) rotate(-72.87)"/>
-    <rect id="plot-28" class="plot" x="164.3" y="54.95" width="20.78" height="34.63" transform="translate(54.17 217.92) rotate(-72.87)"/>
-    <polygon id="plot-27" class="plot" points="194.29 67.44 200.69 46.7 167.59 36.52 161.2 57.24 194.29 67.44"/>
-    <polygon id="plot-39" class="plot" points="89.59 183.73 83.35 203.95 113.16 213.01 119.36 192.91 89.59 183.73"/>
-    <polygon id="plot-40" class="plot" points="119.36 192.91 113.16 213.01 146.3 223.1 152.45 203.11 119.36 192.91"/>
-    <rect id="plot-41" class="plot" x="124.91" y="165.81" width="31.17" height="34.63" transform="translate(-75.89 263.42) rotate(-72.86)"/>
-    <rect id="plot-38" class="plot" x="93.46" y="157.68" width="31.17" height="31.16" transform="translate(-88.66 226.39) rotate(-72.86)"/>
-    <rect id="plot-22" class="plot" x="192.71" y="135.21" width="27.71" height="31.16" transform="translate(1.6 303.76) rotate(-72.86)"/>
-    <rect id="plot-23" class="plot" x="203.33" y="112.05" width="20.78" height="31.16" transform="translate(28.8 294.27) rotate(-72.87)"/>
-    <polygon id="plot-24" class="plot" points="231.66 122.29 237.79 102.44 208.01 93.25 201.89 113.11 231.66 122.29"/>
-    <rect id="plot-25" class="plot" x="215.57" y="72.33" width="20.78" height="31.17" transform="translate(75.38 277.96) rotate(-72.87)"/>
-    <polygon id="plot-26" class="plot" points="243.91 82.58 250.31 61.83 220.53 52.66 214.13 73.4 243.91 82.58"/>
-    <polygon id="plot-17" class="plot" points="250.31 61.83 243.91 82.58 277 92.79 283.41 72.01 250.31 61.83"/>
-    <rect id="plot-18" class="plot" x="247.01" y="80.3" width="20.78" height="34.63" transform="translate(88.3 314.84) rotate(-72.87)"/>
-    <polygon id="plot-19" class="plot" points="237.79 102.44 231.66 122.29 264.76 132.49 270.88 112.64 237.79 102.44"/>
-    <polygon id="plot-20" class="plot" points="231.66 122.29 225.54 142.15 258.63 152.36 264.76 132.49 231.66 122.29"/>
-    <polygon id="plot-21" class="plot" points="250.48 178.83 258.63 152.36 225.54 142.15 217.38 168.63 250.48 178.83"/>
-    <polygon id="plot-43" class="plot" points="195.99 237.96 203.09 214.95 173.31 205.77 166.15 228.98 168.88 229.8 195.99 237.96"/>
-    <polygon id="plot-44" class="plot" points="229.16 247.93 236.18 225.16 203.09 214.95 195.99 237.96 229.16 247.93"/>
-    <rect id="plot-45" class="plot" x="209.87" y="189.51" width="27.7" height="34.63" transform="translate(-39.86 359.62) rotate(-72.85)"/>
-    <polygon id="plot-42" class="plot" points="181.49 179.46 173.33 205.93 203.11 215.11 211.27 188.64 181.49 179.46"/>
-    <polygon id="plot-49" class="plot" points="278.85 263.07 303.83 270.8 311.91 273.37 318.91 250.66 285.82 240.46 278.85 263.07"/>
-    <rect id="plot-48" class="plot" x="292.61" y="215.17" width="27.7" height="34.63" transform="translate(-6.04 456.79) rotate(-72.85)"/>
-    <polygon id="plot-47" class="plot" points="256.06 231.44 249.07 254.08 257.27 256.55 278.87 263.23 285.84 240.62 256.06 231.44"/>
-    <polygon id="plot-46" class="plot" points="285.82 240.46 293.98 213.99 264.2 204.8 256.04 231.28 285.82 240.46"/>
-    <rect id="plot-11" class="plot" x="306.9" y="168.85" width="27.7" height="34.63" transform="translate(48.3 437.78) rotate(-72.85)"/>
-    <rect id="plot-10" class="plot" x="317.51" y="145.69" width="20.78" height="34.63" transform="translate(75.54 428.33) rotate(-72.87)"/>
-    <rect id="plot-9" class="plot" x="323.63" y="125.83" width="20.78" height="34.63" transform="translate(98.7 420.06) rotate(-72.84)"/>
-    <rect id="plot-8" class="plot" x="329.76" y="105.98" width="20.78" height="34.63" transform="translate(122.13 412.03) rotate(-72.87)"/>
-    <polygon id="plot-7" class="plot" points="359.75 118.47 366.16 97.66 333.07 87.47 326.66 108.26 359.75 118.47"/>
-    <polygon id="plot-16" class="plot" points="326.66 108.26 333.07 87.47 303.29 78.29 296.87 99.08 326.66 108.26"/>
-    <rect id="plot-15" class="plot" x="298.3" y="97.85" width="20.78" height="31.17" transform="translate(109.36 375.02) rotate(-72.87)"/>
-    <polygon id="plot-14" class="plot" points="314.39 147.81 320.52 127.96 290.74 118.77 284.62 138.63 314.39 147.81"/>
-    <polygon id="plot-13" class="plot" points="308.27 167.66 314.39 147.81 284.62 138.63 278.49 158.48 308.27 167.66"/>
-    <polygon id="plot-12" class="plot" points="300.1 194.14 308.27 167.66 278.49 158.48 270.33 184.95 300.1 194.14"/>
-    <polygon id="plot-3" class="plot" points="391.02 193.33 392.46 188.66 396.03 177.74 397.39 173.55 367.35 164.29 361.23 184.15 391.02 193.33"/>
-    <rect id="plot-2" class="plot" x="358.19" y="186.39" width="27.7" height="31.17" transform="translate(69.36 497.94) rotate(-72.85)"/>
-    <polygon id="plot-1" class="plot" points="392.46 188.66 391.02 193.33 382.85 219.8 426.57 233.29 436.1 203.18 410.52 194.42 392.46 188.66"/>
-    <polygon id="plot-5" class="plot" points="379.6 124.59 373.48 144.44 403.77 153.78 406.78 144.44 410.05 133.98 379.6 124.59"/>
-    <polygon id="plot-6" class="plot" points="410.05 133.98 416.51 113.3 386.01 103.8 379.6 124.59 410.05 133.98"/>
-    <polygon id="plot-4" class="plot" points="397.39 173.55 403.77 153.78 373.48 144.44 367.35 164.29 397.39 173.55"/>
+    <rect id="Plot-37" class="cls-8" x="43.83" y="142.37" width="31.17" height="31.17" transform="translate(-109.04 168.19) rotate(-72.86)"/>
+    <polygon id="Plot-36" class="cls-8" points="113.06 107.61 104.89 134.09 134.68 143.27 142.83 116.8 113.06 107.61"/>
+    <polygon id="Plot-35" class="cls-8" points="119.18 87.76 113.06 107.61 142.83 116.8 148.96 96.95 119.18 87.76"/>
+    <rect id="Plot-34" class="cls-8" x="126.74" y="66.84" width="20.78" height="31.17" transform="translate(17.97 189.19) rotate(-72.87)"/>
+    <polygon id="Plot-33" class="cls-8" points="131.43 48.05 125.3 67.91 155.08 77.09 161.2 57.24 131.43 48.05"/>
+    <polygon id="Plot-32" class="cls-8" points="161.2 57.24 167.59 36.52 160.9 34.47 137.78 27.41 131.43 48.05 161.2 57.24"/>
+    <rect id="Plot-31" class="cls-8" x="141.43" y="117.66" width="27.7" height="34.63" transform="translate(-19.43 243.63) rotate(-72.88)"/>
+    <rect id="Plot-30" class="cls-8" x="152.03" y="94.5" width="20.78" height="34.63" transform="translate(7.67 234.02) rotate(-72.84)"/>
+    <rect id="Plot-29" class="cls-8" x="158.16" y="74.65" width="20.78" height="34.63" transform="translate(31.02 225.94) rotate(-72.87)"/>
+    <rect id="Plot-28" class="cls-8" x="164.3" y="54.95" width="20.78" height="34.63" transform="translate(54.17 217.92) rotate(-72.87)"/>
+    <polygon id="Plot-27" class="cls-8" points="194.29 67.44 200.69 46.7 167.59 36.52 161.2 57.24 194.29 67.44"/>
+    <polygon id="Plot-39" class="cls-8" points="89.59 183.73 83.35 203.95 113.16 213.01 119.36 192.91 89.59 183.73"/>
+    <polygon id="Plot-40" class="cls-8" points="119.36 192.91 113.16 213.01 146.3 223.1 152.45 203.11 119.36 192.91"/>
+    <rect id="Plot-41" class="cls-8" x="124.91" y="165.81" width="31.17" height="34.63" transform="translate(-75.89 263.42) rotate(-72.86)"/>
+    <rect id="Plot-38" class="cls-8" x="93.46" y="157.68" width="31.17" height="31.16" transform="translate(-88.66 226.39) rotate(-72.86)"/>
+    <rect id="Plot-22" class="cls-8" x="192.71" y="135.21" width="27.71" height="31.16" transform="translate(1.6 303.76) rotate(-72.86)"/>
+    <rect id="Plot-23" class="cls-8" x="203.33" y="112.05" width="20.78" height="31.16" transform="translate(28.8 294.27) rotate(-72.87)"/>
+    <polygon id="Plot-24" class="cls-8" points="231.66 122.29 237.79 102.44 208.01 93.25 201.89 113.11 231.66 122.29"/>
+    <rect id="Plot-25" class="cls-8" x="215.57" y="72.33" width="20.78" height="31.17" transform="translate(75.38 277.96) rotate(-72.87)"/>
+    <polygon id="Plot-26" class="cls-8" points="243.91 82.58 250.31 61.83 220.53 52.66 214.13 73.4 243.91 82.58"/>
+    <polygon id="Plot-17" class="cls-8" points="250.31 61.83 243.91 82.58 277 92.79 283.41 72.01 250.31 61.83"/>
+    <rect id="Plot-18" class="cls-8" x="247.01" y="80.3" width="20.78" height="34.63" transform="translate(88.3 314.84) rotate(-72.87)"/>
+    <polygon id="Plot-19" class="cls-8" points="237.79 102.44 231.66 122.29 264.76 132.49 270.88 112.64 237.79 102.44"/>
+    <polygon id="Plot-20" class="cls-8" points="231.66 122.29 225.54 142.15 258.63 152.36 264.76 132.49 231.66 122.29"/>
+    <polygon id="Plot-21" class="cls-8" points="250.48 178.83 258.63 152.36 225.54 142.15 217.38 168.63 250.48 178.83"/>
+    <polygon id="Plot-43" class="cls-8" points="195.99 237.96 203.09 214.95 173.31 205.77 166.15 228.98 168.88 229.8 195.99 237.96"/>
+    <polygon id="Plot-44" class="cls-8" points="229.16 247.93 236.18 225.16 203.09 214.95 195.99 237.96 229.16 247.93"/>
+    <rect id="Plot-45" class="cls-8" x="209.87" y="189.51" width="27.7" height="34.63" transform="translate(-39.86 359.62) rotate(-72.85)"/>
+    <polygon id="Plot-42" class="cls-8" points="181.49 179.46 173.33 205.93 203.11 215.11 211.27 188.64 181.49 179.46"/>
+    <polygon id="Plot-49" class="cls-8" points="278.85 263.07 303.83 270.8 311.91 273.37 318.91 250.66 285.82 240.46 278.85 263.07"/>
+    <rect id="Plot-48" class="cls-8" x="292.61" y="215.17" width="27.7" height="34.63" transform="translate(-6.04 456.79) rotate(-72.85)"/>
+    <polygon id="Plot-47" class="cls-8" points="256.06 231.44 249.07 254.08 257.27 256.55 278.87 263.23 285.84 240.62 256.06 231.44"/>
+    <polygon id="Plot-46" class="cls-8" points="285.82 240.46 293.98 213.99 264.2 204.8 256.04 231.28 285.82 240.46"/>
+    <rect id="Plot-11" class="cls-8" x="306.9" y="168.85" width="27.7" height="34.63" transform="translate(48.3 437.78) rotate(-72.85)"/>
+    <rect id="Plot-10" class="cls-8" x="317.51" y="145.69" width="20.78" height="34.63" transform="translate(75.54 428.33) rotate(-72.87)"/>
+    <rect id="Plot-9" class="cls-8" x="323.63" y="125.83" width="20.78" height="34.63" transform="translate(98.7 420.06) rotate(-72.84)"/>
+    <rect id="Plot-8" class="cls-8" x="329.76" y="105.98" width="20.78" height="34.63" transform="translate(122.13 412.03) rotate(-72.87)"/>
+    <polygon id="Plot-7" class="cls-8" points="359.75 118.47 366.16 97.66 333.07 87.47 326.66 108.26 359.75 118.47"/>
+    <polygon id="Plot-16" class="cls-8" points="326.66 108.26 333.07 87.47 303.29 78.29 296.87 99.08 326.66 108.26"/>
+    <rect id="Plot-15" class="cls-8" x="298.3" y="97.85" width="20.78" height="31.17" transform="translate(109.36 375.02) rotate(-72.87)"/>
+    <polygon id="Plot-14" class="cls-8" points="314.39 147.81 320.52 127.96 290.74 118.77 284.62 138.63 314.39 147.81"/>
+    <polygon id="Plot-13" class="cls-8" points="308.27 167.66 314.39 147.81 284.62 138.63 278.49 158.48 308.27 167.66"/>
+    <polygon id="Plot-12" class="cls-8" points="300.1 194.14 308.27 167.66 278.49 158.48 270.33 184.95 300.1 194.14"/>
+    <polygon id="Plot-3" class="cls-8" points="391.02 193.33 392.46 188.66 396.03 177.74 397.39 173.55 367.35 164.29 361.23 184.15 391.02 193.33"/>
+    <rect id="Plot-2" class="cls-8" x="358.19" y="186.39" width="27.7" height="31.17" transform="translate(69.36 497.94) rotate(-72.85)"/>
+    <polygon id="Plot-1" class="cls-8" points="392.46 188.66 391.02 193.33 382.85 219.8 426.57 233.29 436.1 203.18 410.52 194.42 392.46 188.66"/>
+    <polygon id="Plot-5" class="cls-8" points="379.6 124.59 373.48 144.44 403.77 153.78 406.78 144.44 410.05 133.98 379.6 124.59"/>
+    <polygon id="Plot-6" class="cls-8" points="410.05 133.98 416.51 113.3 386.01 103.8 379.6 124.59 410.05 133.98"/>
+    <polygon id="Plot-4" class="cls-8" points="397.39 173.55 403.77 153.78 373.48 144.44 367.35 164.29 397.39 173.55"/>
     <g>
       <g>
         <polyline class="cls-19" points="595.77 132.81 584.09 172.21 575.49 198.64 567.15 221.65 554.99 251.31 535.99 290.95 519.61 321.99 497.23 363.7"/>
@@ -3653,13 +3632,3 @@
   </g>
   <text class="cls-1" transform="translate(498.31 300.06) rotate(-66.09)"><tspan x="0" y="0">PROPOSED 100’ ROAD</tspan></text>
 </svg>
-
-
-<!-- POPUP -->
-<div id="popup">
-</div>
-
-<script src="assets/js/app.js"></script>
-
-</body>
-</html>
