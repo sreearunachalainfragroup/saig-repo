@@ -37,7 +37,7 @@ function showPopup(id, plot, event) {
     const el = document.getElementById(`plot-${id}`);
 
     popup.innerHTML = `
-        <h3>Plot No. ${id}</h3>
+        <h5>Plot No. ${id}</h5>
         <p><b>Dimension:</b> ${plot.dimension}</p>
         <p><b>Size:</b> ${plot.size} Sq.Yds</p>
         <p><b>Facing:</b> ${plot.facing}</p>
