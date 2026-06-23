@@ -1,8 +1,9 @@
-const API_URL = "https://script.google.com/macros/s/AKfycby9WLfx4mtDJSrWghAhWUy03mQ1V8XqEnL_6oIHGXgDdYw1mSb_Cp1SzpTDd2qV34Y0Ig/exec";
+const API_URL = "https://script.google.com/macros/s/AKfycbxHJZL8mewE6rgtS1-R7Hd1wF5_gnxUu2fszj3zGZfs2Ch983_aVMciCdn3nrAIJcgokg/exec";
 // Deployment ID :
-// AKfycby9WLfx4mtDJSrWghAhWUy03mQ1V8XqEnL_6oIHGXgDdYw1mSb_Cp1SzpTDd2qV34Y0Ig
+// AKfycbxHJZL8mewE6rgtS1-R7Hd1wF5_gnxUu2fszj3zGZfs2Ch983_aVMciCdn3nrAIJcgokg
+// https://script.google.com/
 // Web App Script URL :
-// https://script.google.com/macros/s/AKfycby9WLfx4mtDJSrWghAhWUy03mQ1V8XqEnL_6oIHGXgDdYw1mSb_Cp1SzpTDd2qV34Y0Ig/exec
+// https://script.google.com/macros/s/AKfycbxHJZL8mewE6rgtS1-R7Hd1wF5_gnxUu2fszj3zGZfs2Ch983_aVMciCdn3nrAIJcgokg/exec
 const colors = {
     Available: "#4ce16f",
     Sold: "#eb5362",

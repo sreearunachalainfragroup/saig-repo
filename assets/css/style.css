@@ -180,6 +180,15 @@ footer {
   color: var(--saig-main-font-color);
 }
 
+.carousel-item a {
+    text-decoration: none;
+    color: var(--saig-body-text-color);
+}
+
+.carousel-item a:hover {
+    color: var(--saig-body-text-color);
+}
+
 .custom-font-paras {
   font-size: 15px;
 }
@@ -264,25 +273,25 @@ footer {
 }
 
 .facility-icon {
-  width: 50px;
-  height: 50px;
+  width: 56px;
+  height: 56px;
   border-radius: 50%;
-  background-color: var(--saig-projectamenities-icon-color) !important;
+  background-color: var(--saig-projectamenities-icon-color);
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-shrink: 0;
 }
 
-.facility-icon img {
-  width: 24px;
-  height: 24px;
-  filter: brightness(0) invert(1); /* makes icons white */
+.facility-icon i {
+  font-size: 26px;
+  color: #fff;
 }
 
 .facility-text {
-  font-size: 1rem;
-  color: #5a4632;
-  font-family: 'Poppins', sans-serif;
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--saig-body-text-color);
 }
 
 @media (max-width: 767px) {
