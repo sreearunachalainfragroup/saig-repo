@@ -6,9 +6,10 @@ const API_URL = "https://script.google.com/macros/s/AKfycbxHJZL8mewE6rgtS1-R7Hd1
 // https://script.google.com/macros/s/AKfycbxHJZL8mewE6rgtS1-R7Hd1wF5_gnxUu2fszj3zGZfs2Ch983_aVMciCdn3nrAIJcgokg/exec
 const colors = {
     Available: "#4ce16f",
-    Sold: "#eb5362",
+    Sold: "#ff6200b7",
     Reserved: "#f4ca4b",
-    Mortgage: "#73eed9"
+    Mortgage: "#73eed9",
+    Registered: "#020e63"
 };
 
 async function loadPlots() {
