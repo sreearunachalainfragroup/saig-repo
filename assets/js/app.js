@@ -39,12 +39,16 @@ function showPopup(id, plot, event) {
     const el = document.getElementById(`plot-${id}`);
 
     popup.innerHTML = `
-        <h5>Plot No. ${id}</h5>
-        <p><b>Dimension:</b> ${plot.dimension}</p>
-        <p><b>Size:</b> ${plot.size} Sq.Yds</p>
-        <p><b>Facing:</b> ${plot.facing}</p>
-        <p><b>Status:</b> ${plot.status}</p>
-      `;
+    <h5>Plot No. ${id}</h5>
+    <p><b>Dimension:</b> ${plot.dimension}</p>
+    <p><b>Size:</b> ${plot.size} Sq.Yds</p>
+    <p><b>Facing:</b> ${plot.facing}</p>
+    <p><b>Status:</b> ${plot.status}</p>
+    ${plot.status === "Registered" && plot.customerName
+            ? `<p><b>Registered To:</b> ${plot.customerName}</p>`
+            : ""
+        }
+    `;
 
     // Position centered above plot
     popup.style.transform = "none";
