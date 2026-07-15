@@ -38,53 +38,74 @@
         </div>
 
         <div id="formAlert"></div>
-        <form id="contactForm" novalidate>
-          <div class="mb-3">
-            <input type="text" id="name" class="form-control custom-font-paras" placeholder="Name" maxlength="50">
+        <div id="formContainer">
 
-            <div class="invalid-feedback">
-              Minimum 3 characters required.
-            </div>
-          </div>
-          <div class="mb-3">
-            <input type="email" id="email" class="form-control custom-font-paras" placeholder="Email" maxlength="100">
 
-            <div class="invalid-feedback">
-              Enter a valid email address.
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-md-6 mb-3">
-              <input type="tel" id="mobile" class="form-control custom-font-paras" placeholder="Contact No"
-                maxlength="10">
+          <form id="contactForm" novalidate>
+            <div class="mb-3">
+              <input type="text" id="name" autocomplete="name" class="form-control custom-font-paras" placeholder="Name"
+                maxlength="50">
 
               <div class="invalid-feedback">
-                Enter a valid 10-digit mobile number.
+                Minimum 3 characters required.
               </div>
             </div>
-            <div class="col-md-6 mb-3">
-              <input type="text" id="subject" class="form-control custom-font-paras" placeholder="Subject"
-                maxlength="100">
+            <div class="mb-3">
+              <input type="email" id="email" autocomplete="email" spellcheck="false"
+                class="form-control custom-font-paras" placeholder="Email" maxlength="100">
 
               <div class="invalid-feedback">
-                Minimum 5 characters required.
+                Enter a valid email address.
               </div>
             </div>
-          </div>
-          <div class="mb-3">
-            <textarea id="message" class="form-control custom-font-paras" rows="4" maxlength="500"
-              placeholder="Message"></textarea>
+            <div class="row">
+              <div class="col-md-6 mb-3">
+                <input type="tel" inputmode="numeric" autocomplete="tel" id="mobile"
+                  class="form-control custom-font-paras" placeholder="Mobile Number" maxlength="10">
 
-            <div class="invalid-feedback">
-              Minimum 10 characters required.
+                <div class="invalid-feedback">
+                  Enter a valid 10-digit mobile number.
+                </div>
+              </div>
+              <div class="col-md-6 mb-3">
+                <input type="text" id="subject" spellcheck="true" class="form-control custom-font-paras"
+                  placeholder="Subject" maxlength="100">
+
+                <div class="invalid-feedback">
+                  Minimum 5 characters required.
+                </div>
+              </div>
             </div>
-          </div>
+            <div class="mb-3">
+              <textarea id="message" spellcheck="true" class="form-control custom-font-paras" rows="4" maxlength="500"
+                placeholder="Message"></textarea>
 
-          <div class="text-center">
-            <button id="submitBtn" type="submit" class="btn btn-primary px-5 custom-font-paras"
-              style="background-color: var(--saig-logo-brown-dark); border:none;">SUBMIT</button>
-          </div>
-        </form>
+              <div class="invalid-feedback">
+                Minimum 10 characters required.
+              </div>
+            </div>
+
+            <div class="text-center">
+              <button id="submitBtn" type="submit"
+                class="btn px-5 custom-font-paras d-inline-flex align-items-center justify-content-center" style="
+              min-width:190px;
+              height:50px;
+              background:var(--saig-logo-brown-dark);
+              color:#fff;
+              border:none;
+              font-weight:600;
+              ">
+
+                <span id="submitSpinner" class="spinner-border spinner-border-sm me-2 d-none">
+                </span>
+
+                <span id="submitText">SUBMIT</span>
+
+              </button>
+            </div>
+          </form>
+        </div>
+
       </div>
       <!-- Image Section -->
       <div class="col-sm-6">
@@ -94,6 +115,8 @@
 
     <script>
       const API_URL = "https://script.google.com/macros/s/AKfycbwTbZPfYIWFNReB065yt4HbpwxII6u4JDvgkz7Hb0tFmnDp8hiEC9xexLP0kHuFhBRwrw/exec";
+
+      let isSubmitting = false;
 
       const form = document.getElementById("contactForm");
       const validationAlert = document.getElementById("validationAlert");
@@ -110,9 +133,29 @@
 
         const alertBox = document.getElementById("formAlert");
 
+        let icon = "";
+
+        switch (type) {
+
+          case "success":
+            icon = `<i class="bi bi-check-circle-fill me-2"></i>`;
+            break;
+
+          case "danger":
+            icon = `<i class="bi bi-exclamation-triangle-fill me-2"></i>`;
+            break;
+
+          case "warning":
+            icon = `<i class="bi bi-exclamation-circle-fill me-2"></i>`;
+            break;
+
+          default:
+            icon = `<i class="bi bi-info-circle-fill me-2"></i>`;
+        }
+
         alertBox.innerHTML = `
         <div class="alert alert-${type} alert-dismissible fade show custom-font-paras" role="alert">
-            ${message}
+            ${icon}${message}
             <button type="button"
                     class="btn-close"
                     data-bs-dismiss="alert">
@@ -131,7 +174,7 @@
         switch (fieldName) {
 
           case "name":
-            valid = /^[A-Za-z ]{3,50}$/.test(value);
+            valid = /^[A-Za-z.' -]{3,50}$/.test(value) && /[A-Za-z]/.test(value);
             break;
 
           case "email":
@@ -143,11 +186,13 @@
             break;
 
           case "subject":
-            valid = value.length >= 5 && value.length <= 100;
+            valid = value.length >= 5 && /[A-Za-z]/.test(value);
+            //valid = value.length >= 5 && value.length <= 100;
             break;
 
           case "message":
-            valid = value.length >= 10 && value.length <= 500;
+            //valid = value.length >= 10 && value.length <= 500;
+            valid = value.length >= 10 && /[A-Za-z]/.test(value);
             break;
         }
 
@@ -196,13 +241,68 @@
 
       fields.name.addEventListener("input", function () {
 
-        this.value = this.value.replace(/[^a-zA-Z ]/g, '');
+        // Allow only valid characters
+        this.value = this.value.replace(/[^A-Za-z.' -]/g, "");
+
+        // Replace multiple spaces with a single space
+        this.value = this.value.replace(/\s{2,}/g, " ");
 
       });
+
+      function startLoading() {
+
+        setFormEnabled(false);
+
+        const btn = document.getElementById("submitBtn");
+
+        btn.style.opacity = "0.85";
+
+        document.body.style.cursor = "wait";
+
+        document.getElementById("formContainer").style.opacity = "0.6";
+
+        document.getElementById("submitSpinner").classList.remove("d-none");
+
+        document.getElementById("submitText").textContent = "Submitting...";
+
+      }
+
+      function stopLoading() {
+
+        setFormEnabled(true);
+
+        const btn = document.getElementById("submitBtn");
+
+        btn.style.opacity = "1";
+
+        document.body.style.cursor = "default";
+
+        document.getElementById("formContainer").style.opacity = "1";
+
+        document.getElementById("submitSpinner").classList.add("d-none");
+
+        document.getElementById("submitText").textContent = "SUBMIT";
+
+      }
+
+      function setFormEnabled(enabled) {
+
+        const elements = document.querySelectorAll(
+          "#contactForm input, #contactForm textarea, #contactForm button"
+        );
+
+        elements.forEach(element => {
+          element.disabled = !enabled;
+        });
+
+      }
 
       form.addEventListener("submit", async function (e) {
 
         e.preventDefault();
+
+        if (isSubmitting) return;
+        isSubmitting = true;
 
         let valid = true;
 
@@ -222,17 +322,22 @@
             block: "center"
           });
 
-          return;
+          const firstInvalid = document.querySelector(".is-invalid");
 
+          if (firstInvalid) {
+            firstInvalid.focus();
+          }
+
+          isSubmitting = false;
+
+          return;
         }
 
         validationAlert.classList.add("d-none");
 
         const submitBtn = document.getElementById("submitBtn");
 
-        submitBtn.disabled = true;
-
-        submitBtn.innerHTML = "Submitting...";
+        startLoading();
 
         const enquiry = new FormData();
 
@@ -260,6 +365,21 @@
               "success"
             );
 
+            document.getElementById("formAlert").scrollIntoView({
+              behavior: "smooth",
+              block: "center"
+            });
+
+            setTimeout(() => {
+              const alert = document.querySelector("#formAlert .alert");
+              if (alert) {
+                alert.classList.remove("show");
+                setTimeout(() => {
+                  document.getElementById("formAlert").innerHTML = "";
+                }, 300);
+              }
+            }, 6000);
+
             form.reset();
 
             Object.values(fields).forEach(field => {
@@ -286,10 +406,13 @@
           );
 
         }
+        finally {
 
-        submitBtn.disabled = false;
+          stopLoading();
 
-        submitBtn.innerHTML = "SUBMIT";
+          isSubmitting = false;
+
+        }
 
       });
     </script>

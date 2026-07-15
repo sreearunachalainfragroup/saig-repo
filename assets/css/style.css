@@ -360,5 +360,10 @@ footer {
   stroke: black;
 }
 
+/* Write To Us */
+#formContainer{
+    transition:opacity .3s ease;
+}
+
 
 
