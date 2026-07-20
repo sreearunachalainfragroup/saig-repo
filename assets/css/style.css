@@ -481,3 +481,38 @@ VIDEOS SECTION
 .video-btn {
   font-size: 14px;
 }
+
+/* ==============================
+   Projects Carousel Controls
+   ============================== */
+
+/* Projects carousel */
+#ongoingProjects,
+#completedProjects {
+    position: relative;
+}
+
+/* Position arrows near the card */
+#ongoingProjects .carousel-control-prev,
+#completedProjects .carousel-control-prev {
+    left: 18%;
+    width: auto;
+}
+
+#ongoingProjects .carousel-control-next,
+#completedProjects .carousel-control-next {
+    right: 18%;
+    width: auto;
+}
+
+/* Arrow styling */
+#ongoingProjects .carousel-control-prev-icon,
+#ongoingProjects .carousel-control-next-icon,
+#completedProjects .carousel-control-prev-icon,
+#completedProjects .carousel-control-next-icon {
+    width: 52px;
+    height: 52px;
+    background-size: 60%;
+    background-color: rgba(0,0,0,.45);
+    border-radius: 50%;
+}
