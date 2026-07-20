@@ -25,81 +25,37 @@
 
       <div class="container">
 
-        <!-- SAIG-ONGOING -->
-        <div class="project-category mb-5">
-          <h3 class="text-center custom-font-large custom-font-bold mt-3 mb-5">ONGOING</h3>
-          <!-- SOLARIS MEADOWS -->
-          <div class="row justify-content-center">
-            <div class="col-md-8">
-              <div class="card projectcard-custom-border shadow-sm border-10 overflow-hidden">
-                <div class="row g-0 align-items-stretch">
-                  <!-- Left Image Section -->
-                  <div class="col-md-6">
-                    <img src="assets/img/saig-card-openplot.jpg" alt="Project Image"
-                      class="img-fluid h-100 w-100 object-fit-cover rounded-start">
-                  </div>
-                  <!-- Right Content Section -->
-                  <div class="col-md-6 p-4 project-card-textcolor d-flex flex-column justify-content-center"
-                    style="background-color: var(--saig-projectscard-color);">
-                    <h3 class="custom-font-paras custom-font-bold mb-2">SOLARIS MEADOWS</h3>
-                    <p class="custom-font-paras mb-1"><strong>Category: </strong>FCDA Approved </p>
-                    <p class="custom-font-paras mb-1">Ready to Construct | Located at Kadthal Town,  <br> In Future City Growth Corridor </p>
-                    <!-- Short, Left-Aligned Button -->
-                    <div class="mt-3">
-                      <a href="projects-ongoing-solarismeadows-detail.html" class="btn btn-sm text-white custom-font-paras px-3"
-                        style="background-color: var(--saig-logo-brown-dark); border:none;">
-                        Know More
-                      </a>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
+        <!-- Loading -->
+        <div id="projectsLoading" class="loading-projects-section text-center py-5">
+
+          <div class="spinner-border" style="color:var(--saig-logo-brown-dark);" role="status">
           </div>
+
+          <p class="mt-3 custom-font-paras">
+            Loading projects...
+          </p>
+
         </div>
-        <!-- AMEYA ENCLAVE -->
-        <!-- <div class="row justify-content-center">
-            <div class="col-md-8">
-              <div class="card projectcard-custom-border shadow-sm border-10 overflow-hidden">
-                <div class="row g-0 align-items-stretch">
-                  <div class="col-md-6">
-                    <img src="assets/img/saig-card-commercial.jpg" alt="Project Image"
-                      class="img-fluid h-100 w-100 object-fit-cover rounded-start">
-                  </div>
-                  <div class="col-md-6 p-4 project-card-textcolor d-flex flex-column justify-content-center"
-                    style="background-color: var(--saig-projectscard-color);">
-                    <h3 class="custom-font-paras custom-font-bold mb-2">Ameya Enclave</h3>
-                    <p class="custom-font-paras mb-1"><strong>Category: </strong>HMDA Approved</p>
-                    <p class="custom-font-paras mb-1">Ready to Construct | Located in Mangalpalle, Near ORR Service Road</p>
-                    <div class="mt-3">
-                      <a href="projects-ongoing-ameyaenclave-detail.html" class="btn btn-sm text-white custom-font-paras px-3"
-                        style="background-color: var(--saig-logo-brown-dark); border:none;">
-                        Know More
-                      </a>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div> -->
 
-        <!-- <div class="project-category-bottom mb-5"></div> -->
-
-        <!-- SAIG-UPCOMING -->
-        <!-- <div class="project-category mb-5">
-          <h3 class="text-center custom-font-large custom-font-bold mt-3 mb-5">UPCOMING</h3>
-          
-        </div> -->
+        <!-- Dynamic Projects -->
+        <div id="projectsPageContainer" style="display:none;">
+        </div>
 
       </div>
+
     </section>
+
   </main>
 
   <!-- Footer-->
   <div id="footer" class="mt-auto py-1"></div>
 
   <script src="assets/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+  <script src="assets/js/config.js"></script>
   <script src="assets/js/common.js"></script>
+  <script src="assets/js/videos.js"></script>
+  <script src="assets/js/projects.js"></script>
 </body>
 
 </html>

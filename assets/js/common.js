@@ -45,8 +45,12 @@ function loadNavbarAndFooter() {
         loadVideos();
     }
 
+    // Load Projects (Home & Projects page)
     if (
-        document.getElementById("projectsLoading") &&
+        (
+            document.getElementById("ongoingSection") ||
+            document.getElementById("projectsPageContainer")
+        ) &&
         typeof loadProjects === "function"
     ) {
         loadProjects();

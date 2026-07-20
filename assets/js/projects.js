@@ -1,6 +1,7 @@
 const PROJECT_API = API_BASE;
 
 async function loadProjects() {
+    console.log("PROJECT_API =", PROJECT_API);
 
     const loading = document.getElementById("projectsLoading");
     const content = document.getElementById("projectsContent");
@@ -11,28 +12,77 @@ async function loadProjects() {
         const data = await response.json();
 
         let projects = data.projects || [];
+        console.log(projects);
+        projects = projects.sort(
+            (a, b) => Number(a.displayOrder) - Number(b.displayOrder)
+        );
 
-        projects = projects
-            .filter(p => p.showOnHome === "Yes")
-            .sort((a, b) => Number(a.displayOrder) - Number(b.displayOrder));
+        // Home page only
+        if (document.getElementById("ongoingSection")) {
+            projects = projects.filter(
+                p => p.showOnHome === "Yes"
+            );
+        }
 
         if (loading) loading.style.display = "none";
         if (content) content.style.display = "block";
 
-        renderProjects(projects);
+        console.log(
+            "Projects page?",
+            !!document.getElementById("projectsPageContainer")
+        );
+
+        console.log(
+            "Home page?",
+            !!document.getElementById("ongoingSection")
+        );
+
+        const isProjectsPage =
+            document.getElementById("projectsPageContainer");
+
+        if (isProjectsPage) {
+            renderProjectsPage(projects);
+        } else {
+            renderProjects(projects);
+        }
 
     } catch (err) {
 
         console.error("Projects Error:", err);
 
+        alert(err);
+
         if (loading) {
             loading.innerHTML = `
-                <p class="custom-font-paras text-danger">
-                    Unable to load projects.
-                </p>
-            `;
+            <p class="custom-font-paras text-danger">
+                Unable to load projects.
+            </p>
+        `;
         }
     }
+}
+
+// Add here 👇
+function getNoProjectsHtml() {
+
+    return `
+        <div class="text-center">
+
+            <i class="bi bi-building"
+               style="font-size:3rem;color:var(--saig-logo-brown-dark);">
+            </i>
+
+            <h4 class="custom-font-headings custom-font-bold mt-3">
+                Projects will be available soon
+            </h4>
+
+            <p class="custom-font-paras">
+                Stay tuned for exciting investment opportunities from
+                Sree Arunachala Infra Group.
+            </p>
+
+        </div>
+    `;
 }
 
 function renderProjects(projects) {
@@ -61,24 +111,8 @@ function renderProjects(projects) {
     if (ongoingProjects.length === 0 &&
         completedProjects.length === 0) {
 
-        document.getElementById("projectsContent").innerHTML = `
-            <div class="text-center py-5">
-
-                <i class="bi bi-building"
-                   style="font-size:3rem;color:var(--saig-logo-brown-dark);">
-                </i>
-
-                <h4 class="custom-font-headings custom-font-bold mt-3">
-                    Projects will be available soon
-                </h4>
-
-                <p class="custom-font-paras">
-                    Stay tuned for exciting investment opportunities from
-                    Sree Arunachala Infra Group.
-                </p>
-
-            </div>
-        `;
+        document.getElementById("projectsContent").innerHTML =
+            getNoProjectsHtml();
     }
 
 }
@@ -191,4 +225,190 @@ function renderProjectSection(containerId, heading, carouselId, projects) {
 
     }
 
+}
+
+
+function renderProjectsPage(projects) {
+
+    const loading = document.getElementById("projectsLoading");
+    const container = document.getElementById("projectsPageContainer");
+
+    if (!container) return;
+
+    if (loading)
+        loading.style.display = "none";
+
+    container.style.display = "block";
+
+    const ongoing =
+        projects.filter(p => p.status === "Ongoing");
+
+    const completed =
+        projects.filter(p => p.status === "Completed");
+
+    let html = "";
+
+    // ================= Ongoing =================
+
+    if (ongoing.length > 0) {
+
+        html += `
+        <div class="project-category mb-5">
+
+            <h3 class="text-center custom-font-large custom-font-bold mt-3 mb-5">
+                ONGOING
+            </h3>
+        `;
+
+        ongoing.forEach(project => {
+
+            html += `
+            <div class="row justify-content-center mb-5">
+
+                <div class="col-md-8">
+
+                    <div class="card projectcard-custom-border shadow-sm overflow-hidden">
+
+                        <div class="row g-0 align-items-stretch">
+
+                            <div class="col-md-6">
+
+                                <img
+                                    src="${project.image}"
+                                    class="img-fluid h-100 w-100 object-fit-cover rounded-start"
+                                    alt="${project.title}">
+
+                            </div>
+
+                            <div class="col-md-6 p-4 project-card-textcolor d-flex flex-column justify-content-center"
+                                style="background:var(--saig-projectscard-color);">
+
+                                <h3 class="custom-font-paras custom-font-bold mb-2">
+
+                                    ${project.title}
+
+                                </h3>
+
+                                <p class="custom-font-paras">
+
+                                    ${project.subtitle}
+
+                                </p>
+
+                                <div class="mt-3">
+
+                                    <a href="${project.page}"
+                                        class="btn btn-sm text-white custom-font-paras px-3"
+                                        style="background:var(--saig-logo-brown-dark);border:none;">
+
+                                        Know More
+
+                                    </a>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+            `;
+
+        });
+
+        html += `</div>`;
+    }
+
+    // ================= Completed =================
+
+    if (completed.length > 0) {
+
+        html += `
+        <div class="project-category">
+
+            <h3 class="text-center custom-font-large custom-font-bold mt-5 mb-5">
+
+                COMPLETED
+
+            </h3>
+        `;
+
+        completed.forEach(project => {
+
+            html += `
+            <div class="row justify-content-center mb-5">
+
+                <div class="col-md-8">
+
+                    <div class="card projectcard-custom-border shadow-sm overflow-hidden">
+
+                        <div class="row g-0 align-items-stretch">
+
+                            <div class="col-md-6">
+
+                                <img
+                                    src="${project.image}"
+                                    class="img-fluid h-100 w-100 object-fit-cover rounded-start"
+                                    alt="${project.title}">
+
+                            </div>
+
+                            <div class="col-md-6 p-4 project-card-textcolor d-flex flex-column justify-content-center"
+                                style="background:var(--saig-projectscard-color);">
+
+                                <h3 class="custom-font-paras custom-font-bold mb-2">
+
+                                    ${project.title}
+
+                                </h3>
+
+                                <p class="custom-font-paras">
+
+                                    ${project.subtitle}
+
+                                </p>
+
+                                <div class="mt-3">
+
+                                    <a href="${project.page}"
+                                        class="btn btn-sm text-white custom-font-paras px-3"
+                                        style="background:var(--saig-logo-brown-dark);border:none;">
+
+                                        Know More
+
+                                    </a>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+            `;
+
+        });
+
+        html += `</div>`;
+    }
+
+    if (ongoing.length === 0 &&
+        completed.length === 0) {
+
+        html = `
+        <div class="projects-empty-page">
+            ${getNoProjectsHtml()}
+        </div>
+    `;
+    }
+
+    container.innerHTML = html;
 }

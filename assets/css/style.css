@@ -516,3 +516,18 @@ VIDEOS SECTION
     background-color: rgba(0,0,0,.45);
     border-radius: 50%;
 }
+
+.loading-projects-section {
+    min-height: 400px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.projects-empty-page {
+    min-height: 65vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
