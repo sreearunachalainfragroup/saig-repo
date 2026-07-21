@@ -34,15 +34,21 @@
           <p id="projectSubtitle" class="custom-font-paras custom-font-semibold text-center mb-5"></p>
 
           <!-- Videos Container -->
-          <div id="videosContainer" data-project="">
-            <!-- Loading Spinner -->
-            <div class="text-center py-5" id="videoLoading">
-              <div class="spinner-border" style="color:var(--saig-logo-brown-dark);" role="status">
-              </div>
-              <p class="mt-3 custom-font-paras">
-                Loading videos...
-              </p>
+          <div id="videosLoading" class="text-center py-5">
+
+            <div class="spinner-border" style="color:var(--saig-logo-brown-dark);" role="status">
             </div>
+
+            <p class="mt-3 custom-font-paras">
+              Loading videos...
+            </p>
+
+          </div>
+
+          <div id="videosContent" style="display:none;">
+
+            <div id="videosContainer"></div>
+
           </div>
 
         </div>
@@ -88,6 +94,9 @@
   </div>
 
   <script src="assets/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+  <script src="assets/js/config.js"></script>
+  <script src="assets/js/videos.js"></script>
   <script src="assets/js/common.js"></script>
 
 </body>

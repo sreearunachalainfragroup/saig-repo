@@ -1,17 +1,35 @@
 const VIDEO_API = API_BASE;
 
-async function loadVideos() {
+function getNoVideosHtml(title = "Videos will be available soon") {
 
-    console.log("Loading videos...");
+    return `
+        <div class="text-center py-5">
+
+            <i class="bi bi-camera-video"
+                style="font-size:3rem;color:var(--saig-logo-brown-dark);">
+            </i>
+
+            <h4 class="custom-font-headings custom-font-bold mt-3">
+                ${title}
+            </h4>
+
+            <p class="custom-font-paras">
+                Stay tuned for the latest project videos from
+                Sree Arunachala Infra Group.
+            </p>
+
+        </div>
+    `;
+}
+
+async function loadVideos() {
 
     try {
 
         const response = await fetch(VIDEO_API + "?action=videos");
-        const text = await response.text();
-        console.log(text);
+        const data = await response.json();
 
-        const data = JSON.parse(text);
-        let videos = data.videos;
+        let videos = data.videos || [];
 
         const loading = document.getElementById("videosLoading");
         const content = document.getElementById("videosContent");
@@ -22,7 +40,6 @@ async function loadVideos() {
         // Read project from URL
         const project = getProjectFromUrl();
 
-        // Update page heading
         // Update page heading
         if (project) {
 
@@ -35,23 +52,37 @@ async function loadVideos() {
             }
 
             const subtitle = document.getElementById("projectSubtitle");
+
             if (subtitle) {
-                const firstVideo = videos.find(v => v.project === project);
+
+                const firstVideo = videos.find(
+                    v => v.project === project && v.active === "Yes"
+                );
+
                 if (firstVideo) {
-                    subtitle.textContent = firstVideo.projectSubtitle;
+
+                    subtitle.textContent =
+                        firstVideo.pageDescription || "";
+
                 }
+
             }
         }
 
         // Home Page
         if (container.dataset.page === "home") {
-            videos = videos.filter(v => v.showOnHome === "Yes");
+            videos = videos.filter(v =>
+                v.showOnHome === "Yes" &&
+                v.active === "Yes"
+            );
         }
 
         // Project Videos Page
         if (project) {
-            videos = videos.filter(v => v.project === project);
-            videos = videos.filter(v => v.active === "Yes");
+            videos = videos.filter(v =>
+                v.project === project &&
+                v.active === "Yes"
+            );
         }
 
         videos.sort((a, b) =>
@@ -89,19 +120,18 @@ async function loadVideos() {
 }
 
 function renderVideos(videos) {
+    const activeProjects = new Set(
+        videos
+            .filter(v => v.active === "Yes")
+            .map(v => v.project)
+    );
     const container = document.getElementById("videosContainer");
     if (!container) return;
 
     const isHomePage = container.dataset.page === "home";
 
     if (!videos || videos.length === 0) {
-        container.innerHTML = `
-            <div class="text-center py-5">
-                <p class="custom-font-paras">
-                    Videos will be available soon.
-                </p>
-            </div>
-        `;
+        container.innerHTML = getNoVideosHtml();
         return;
     }
     let html = "";
@@ -146,7 +176,9 @@ function renderVideos(videos) {
         justify-content-center"
         style="background:var(--saig-projectscard-color);">
         <h5 class="custom-font-paras custom-font-bold mb-2">
-        ${video.title}
+            ${isHomePage && video.category === "Projects"
+                        ? video.project
+                        : video.title}
         </h5>
         <p class="custom-font-paras">
         ${video.description}
@@ -155,13 +187,22 @@ function renderVideos(videos) {
         <div class="mt-3">
 
             ${isHomePage && video.category === "Projects"
-                ? `
-            <a href="project-videos.html?project=${encodeURIComponent(video.project)}"
-            class="btn btn-sm text-white px-3"
-            style="background:var(--saig-logo-brown-dark);border:none;">
-            View Videos
-            </a>
-            `
+                ? activeProjects.has(video.project)
+                    ? `
+                <a href="project-videos.html?project=${encodeURIComponent(video.project)}"
+                class="btn btn-sm text-white px-3"
+                style="background:var(--saig-logo-brown-dark);border:none;">
+                View Videos
+                </a>
+                `
+                    : `
+                <button
+                class="btn btn-sm text-white px-3"
+                style="background:#999;border:none;"
+                disabled>
+                Videos Coming Soon
+                </button>
+                `
                 : videoId
                     ? `
             <button
