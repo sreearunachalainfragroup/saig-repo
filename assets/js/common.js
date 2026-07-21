@@ -45,6 +45,14 @@ function loadNavbarAndFooter() {
         loadVideos();
     }
 
+    // Load Gallery
+    if (
+        document.getElementById("galleryLoading") &&
+        typeof loadGallery === "function"
+    ) {
+        loadGallery();
+    }
+
     // Load Projects (Home & Projects page)
     if (
         (
@@ -56,18 +64,6 @@ function loadNavbarAndFooter() {
         loadProjects();
     }
 
-    // Load Gallery Image Full Screen
-    const imageModal = document.getElementById('imageModal');
-    const modalImage = document.getElementById('modalImage');
-    if (imageModal && modalImage) {
-        const galleryImages = document.querySelectorAll('.gallery-img');
-        galleryImages.forEach(function (img) {
-            img.addEventListener('click', function () {
-                const src = img.getAttribute('data-bs-src');
-                modalImage.src = src;
-            });
-        });
-    }
 }
 
 document.addEventListener("DOMContentLoaded", () => {
