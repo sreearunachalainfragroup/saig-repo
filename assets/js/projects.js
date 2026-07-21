@@ -12,17 +12,16 @@ async function loadProjects() {
         const data = await response.json();
 
         let projects = data.projects || [];
-        console.log(projects);
-        projects = projects.sort(
-            (a, b) => Number(a.displayOrder) - Number(b.displayOrder)
+
+        // Show only active projects
+        projects = projects.filter(
+            p => p.showOnWebsite === "Yes"
         );
 
-        // Home page only
-        if (document.getElementById("ongoingSection")) {
-            projects = projects.filter(
-                p => p.showOnHome === "Yes"
-            );
-        }
+        // Sort after filtering
+        projects.sort(
+            (a, b) => Number(a.displayOrder) - Number(b.displayOrder)
+        );
 
         if (loading) loading.style.display = "none";
         if (content) content.style.display = "block";
