@@ -3,7 +3,7 @@ const VIDEO_API = API_BASE;
 function getNoVideosHtml(title = "Videos will be available soon") {
 
     return `
-        <div class="text-center pt-1 pb-3">
+        <div class="text-center pt-2 pb-4">
 
             <i class="bi bi-camera-video"
                 style="font-size:3rem;color:var(--saig-logo-brown-dark);">
@@ -48,7 +48,7 @@ async function loadVideos() {
 
             const title = document.getElementById("projectTitle");
             if (title) {
-                title.textContent = `${project} Videos`;
+                title.textContent = `— ${project.toUpperCase()} VIDEOS —`;
             }
 
             const subtitle = document.getElementById("projectSubtitle");
