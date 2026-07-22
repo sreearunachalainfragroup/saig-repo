@@ -40,7 +40,7 @@ async function loadGallery() {
     try {
 
         const response =
-            await fetch(GALLERY_API + "?action=gallery");
+            await fetch(`${GALLERY_API}?action=gallery&key=${API_KEY}`);
 
         const data = await response.json();
 

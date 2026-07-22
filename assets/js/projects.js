@@ -8,7 +8,7 @@ async function loadProjects() {
 
     try {
 
-        const response = await fetch(PROJECT_API + "?action=projects");
+        const response = await fetch(`${PROJECT_API}?action=projects&key=${API_KEY}`);
         const data = await response.json();
 
         let projects = data.projects || [];

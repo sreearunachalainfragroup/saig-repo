@@ -26,7 +26,7 @@ async function loadVideos() {
 
     try {
 
-        const response = await fetch(VIDEO_API + "?action=videos");
+        const response = await fetch(`${VIDEO_API}?action=videos&key=${API_KEY}`);
         const data = await response.json();
 
         let videos = data.videos || [];
