@@ -3,7 +3,7 @@ const VIDEO_API = API_BASE;
 function getNoVideosHtml(title = "Videos will be available soon") {
 
     return `
-        <div class="text-center py-5">
+        <div class="text-center pt-1 pb-3">
 
             <i class="bi bi-camera-video"
                 style="font-size:3rem;color:var(--saig-logo-brown-dark);">
@@ -71,27 +71,41 @@ async function loadVideos() {
 
         // Home Page
         if (container.dataset.page === "home") {
+
             videos = videos.filter(v =>
-                v.showOnHome === "Yes" &&
-                v.active === "Yes"
+                (v.showOnHome || "").trim().toLowerCase() === "yes" &&
+                (v.active || "").trim().toLowerCase() === "yes"
             );
+
+            if (videos.length === 0) {
+
+                if (loading) loading.style.display = "none";
+                if (content) content.style.display = "block";
+
+                renderVideos([]);
+
+                return;
+            }
         }
 
         // Project Videos Page
         if (project) {
+
             videos = videos.filter(v =>
                 v.project === project &&
                 v.active === "Yes"
             );
+
         }
 
         videos.sort((a, b) =>
             Number(a.displayOrder) - Number(b.displayOrder)
         );
-        renderVideos(videos);
 
         if (loading) loading.style.display = "none";
         if (content) content.style.display = "block";
+
+        renderVideos(videos);
 
     }
     catch (err) {
@@ -120,6 +134,7 @@ async function loadVideos() {
 }
 
 function renderVideos(videos) {
+
     const activeProjects = new Set(
         videos
             .filter(v => v.active === "Yes")
@@ -130,11 +145,28 @@ function renderVideos(videos) {
 
     const isHomePage = container.dataset.page === "home";
 
+    let html = "";
+    if (isHomePage && videos.length > 0) {
+
+        html += `
+        <div class="text-center mb-5">
+            <h2 class="custom-font-headings custom-font-bold">
+                VIDEOS @ SAIG
+            </h2>
+
+            <p class="custom-font-paras">
+                Explore our corporate updates, project walkthroughs,
+                customer stories and event highlights.
+            </p>
+        </div>
+    `;
+    }
+
     if (!videos || videos.length === 0) {
         container.innerHTML = getNoVideosHtml();
         return;
     }
-    let html = "";
+
     videos.forEach(video => {
 
         const showPlayIcon =
@@ -177,8 +209,8 @@ function renderVideos(videos) {
         style="background:var(--saig-projectscard-color);">
         <h5 class="custom-font-paras custom-font-bold mb-2">
             ${isHomePage && video.category === "Projects"
-                        ? video.project
-                        : video.title}
+                ? video.project
+                : video.title}
         </h5>
         <p class="custom-font-paras">
         ${video.description}
