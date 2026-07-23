@@ -103,6 +103,11 @@
 
               </button>
             </div>
+            <!-- Honeypot Field (Spam Protection) -->
+            <div style="display:none;">
+              <label for="website">Website</label>
+              <input type="text" id="website" name="website" autocomplete="off">
+            </div>
           </form>
         </div>
 
@@ -346,6 +351,11 @@
         enquiry.append("mobile", fields.mobile.value.trim());
         enquiry.append("subject", fields.subject.value.trim());
         enquiry.append("message", fields.message.value.trim());
+        // Honeypot
+        enquiry.append(
+          "website",
+          document.getElementById("website").value.trim()
+        );
 
         try {
 

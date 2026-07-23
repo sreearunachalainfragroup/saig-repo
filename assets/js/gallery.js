@@ -199,14 +199,39 @@ function initGalleryModal() {
     const modalImage =
         document.getElementById("modalImage");
 
+    // Disable right-click on modal image
+    modalImage.addEventListener("contextmenu", function (e) {
+        e.preventDefault();
+    });
+
+    // Disable dragging of modal image
+    modalImage.addEventListener("dragstart", function (e) {
+        e.preventDefault();
+    });
+
     document
         .querySelectorAll(".gallery-img")
         .forEach(img => {
 
+            // Open modal
             img.addEventListener("click", function () {
 
                 modalImage.src =
                     this.dataset.bsSrc;
+
+            });
+
+            // Disable right-click
+            img.addEventListener("contextmenu", function (e) {
+
+                e.preventDefault();
+
+            });
+
+            // Disable dragging
+            img.addEventListener("dragstart", function (e) {
+
+                e.preventDefault();
 
             });
 

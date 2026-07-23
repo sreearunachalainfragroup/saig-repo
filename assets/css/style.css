@@ -243,12 +243,12 @@ footer {
 
 .projectcard-custom-border {
   border-color: var(--saig-logo-brown-dark) !important;
-  transition:.3s ease;
+  transition: .3s ease;
 }
 
-.projectcard-custom-border:hover{
-    transform:translateY(-3px);
-    box-shadow:0 .6rem 1.2rem rgba(0,0,0,.15);
+.projectcard-custom-border:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 .6rem 1.2rem rgba(0, 0, 0, .15);
 }
 
 .object-fit-cover {
@@ -430,36 +430,36 @@ VIDEOS SECTION
   transform: translate(-50%, -50%) scale(1.1);
 }
 
-.video-play-btn{
-    position:absolute;
-    top:50%;
-    left:50%;
-    transform:translate(-50%,-50%);
+.video-play-btn {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 
-    width:60px;
-    height:60px;
+  width: 60px;
+  height: 60px;
 
-    border:none;
-    border-radius:50%;
+  border: none;
+  border-radius: 50%;
 
-    background:rgba(209,94,0,.9);
-    color:#fff;
+  background: rgba(209, 94, 0, .9);
+  color: #fff;
 
-    display:flex;
-    align-items:center;
-    justify-content:center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 
-    transition:.3s;
+  transition: .3s;
 }
 
-.video-play-btn:hover{
-    transform:translate(-50%,-50%) scale(1.08);
-    background:#ff860d;
+.video-play-btn:hover {
+  transform: translate(-50%, -50%) scale(1.08);
+  background: #ff860d;
 }
 
-.video-play-btn i{
-    font-size:30px;
-    line-height:1;
+.video-play-btn i {
+  font-size: 30px;
+  line-height: 1;
 }
 
 .video-thumb {
@@ -489,20 +489,20 @@ VIDEOS SECTION
 /* Projects carousel */
 #ongoingProjects,
 #completedProjects {
-    position: relative;
+  position: relative;
 }
 
 /* Position arrows near the card */
 #ongoingProjects .carousel-control-prev,
 #completedProjects .carousel-control-prev {
-    left: 18%;
-    width: auto;
+  left: 18%;
+  width: auto;
 }
 
 #ongoingProjects .carousel-control-next,
 #completedProjects .carousel-control-next {
-    right: 18%;
-    width: auto;
+  right: 18%;
+  width: auto;
 }
 
 /* Arrow styling */
@@ -510,24 +510,31 @@ VIDEOS SECTION
 #ongoingProjects .carousel-control-next-icon,
 #completedProjects .carousel-control-prev-icon,
 #completedProjects .carousel-control-next-icon {
-    width: 52px;
-    height: 52px;
-    background-size: 60%;
-    background-color: rgba(0,0,0,.45);
-    border-radius: 50%;
+  width: 52px;
+  height: 52px;
+  background-size: 60%;
+  background-color: rgba(0, 0, 0, .45);
+  border-radius: 50%;
 }
 
 .loading-projects-section {
-    min-height: 400px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+  min-height: 400px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .projects-empty-page {
-    min-height: 65vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  min-height: 65vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.gallery-img,
+#modalImage {
+  -webkit-user-drag: none;
+  user-select: none;
+  -webkit-touch-callout: none;
 }
