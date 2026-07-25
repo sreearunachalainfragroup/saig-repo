@@ -1,8 +1,0 @@
-[build]
-  publish = "/"        # because your index.html is in root
-  functions = "netlify/functions"
-
-[[redirects]]
-  from = "/api/auth"
-  to = "/.netlify/functions/auth"
-  status = 200
