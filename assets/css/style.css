@@ -213,7 +213,8 @@ footer {
 }
 
 .write-to-us {
-  padding: 150px 0px;
+    padding-top: 60px;
+    padding-bottom: 120px;
 }
 
 .write-to-us-img {
