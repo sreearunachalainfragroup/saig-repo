@@ -74,6 +74,19 @@ document.addEventListener("DOMContentLoaded", () => {
             document.getElementById("youtubePlayer").src = "";
         });
     }
+
+    // Protect selected images
+    document.querySelectorAll(".protected-image").forEach(img => {
+
+        img.addEventListener("contextmenu", function (e) {
+            e.preventDefault();
+        });
+
+        img.addEventListener("dragstart", function (e) {
+            e.preventDefault();
+        });
+
+    });
 });
 
 

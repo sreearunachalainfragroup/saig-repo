@@ -1,7 +1,7 @@
 const PROJECT_API = API_BASE;
 
 async function loadProjects() {
-    console.log("PROJECT_API =", PROJECT_API);
+    // console.log("PROJECT_API =", PROJECT_API);
 
     const loading = document.getElementById("projectsLoading");
     const content = document.getElementById("projectsContent");
@@ -26,15 +26,15 @@ async function loadProjects() {
         if (loading) loading.style.display = "none";
         if (content) content.style.display = "block";
 
-        console.log(
-            "Projects page?",
-            !!document.getElementById("projectsPageContainer")
-        );
+        // console.log(
+        //     "Projects page?",
+        //     !!document.getElementById("projectsPageContainer")
+        // );
 
-        console.log(
-            "Home page?",
-            !!document.getElementById("ongoingSection")
-        );
+        // console.log(
+        //     "Home page?",
+        //     !!document.getElementById("ongoingSection")
+        // );
 
         const isProjectsPage =
             document.getElementById("projectsPageContainer");

@@ -24,7 +24,7 @@ async function loadPlots() {
             el.style.fill = colors[data[plotNo].status] || "#ccc";
             el.addEventListener("click", (e) => {
                 e.stopPropagation();
-                console.log("Clicked plot:", plotNo); // debug
+                // console.log("Clicked plot:", plotNo); // debug
                 showPopup(plotNo, data[plotNo], e); // pass event
             });
             // Click event
@@ -73,7 +73,7 @@ function showPopup(id, plot, event) {
     popup.style.transform = `translate(-50%, ${translateY})`;
 
     popup.style.display = "block";
-    console.log("Popup opened for:", id); // debug
+    // console.log("Popup opened for:", id); // debug
 }
 
 
