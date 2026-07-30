@@ -1,5 +1,8 @@
 function initNavbarScroll() {
     const navbar = document.querySelector('.custom-navbar');
+
+    if (!navbar) return;
+    
     window.addEventListener("scroll", function () {
         if (window.scrollY > 50) {
             navbar.classList.add("navbar-scrolled");
@@ -16,6 +19,36 @@ function initDropdowns() {
     });
 }
 
+function initNavbarAutoClose() {
+    const navbarCollapse = document.querySelector(".navbar-collapse");
+    const navbarToggler = document.querySelector(".navbar-toggler");
+
+    if (!navbarCollapse || !navbarToggler) return;
+
+    const bsCollapse = new bootstrap.Collapse(navbarCollapse, {
+        toggle: false
+    });
+
+    // Close when clicking outside
+    document.addEventListener("click", function (e) {
+        if (
+            navbarCollapse.classList.contains("show") &&
+            !navbarCollapse.contains(e.target) &&
+            !navbarToggler.contains(e.target)
+        ) {
+            bsCollapse.hide();
+        }
+    });
+
+    // Close after clicking a menu item
+    document.querySelectorAll(".navbar-nav .nav-link, .navbar-nav .dropdown-item")
+        .forEach(item => {
+            item.addEventListener("click", () => {
+                bsCollapse.hide();
+            });
+        });
+}
+
 function loadNavbarAndFooter() {
     // Load Navbar
     const navbarContainer = document.getElementById('navbar');
@@ -26,7 +59,7 @@ function loadNavbarAndFooter() {
             navbarContainer.innerHTML = data;
             initNavbarScroll();
             initDropdowns();
-
+            initNavbarAutoClose();
         });
     // Load Footer
     const footerContainer = document.getElementById('footer');
