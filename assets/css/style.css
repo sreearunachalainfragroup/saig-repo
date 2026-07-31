@@ -30,6 +30,14 @@ body {
   /* A light blue shade */
 }
 
+html {
+  scroll-behavior: auto;
+}
+
+body {
+  -webkit-overflow-scrolling: touch;
+}
+
 /* APPLIES THE SAIG FONT THOUGHOUT THE APP */
 * {
   font-family: 'Montserrat', sans-serif !important;
@@ -574,7 +582,6 @@ VIDEOS SECTION
   html,
   body {
     overflow-x: hidden;
-    overscroll-behavior-y: none;
   }
 
   .footer {
@@ -659,12 +666,46 @@ VIDEOS SECTION
     padding-right: 12px;
     background-color: var(--saig-main-dark-color) !important;
     background-image: none !important;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
   }
 
   .navbar-collapse {
-    background-color: var(--saig-main-dark-color);
-    padding: 15px;
-    border-radius: 8px;
+    overflow: hidden;
+    border: none !important;
+    box-shadow: none !important;
+    background: transparent !important;
+  }
+
+  .navbar-nav {
+    text-align: left;
+    padding: 0 !important;
+    margin: 0 !important;
+    border: none !important;
+  }
+
+  .nav-item {
+    border: none !important;
+    box-shadow: none !important;
+  }
+
+  .navbar-collapse .dropdown-menu {
+    border: none !important;
+    box-shadow: none !important;
+    background: #ffffff;
+    margin-top: 8px !important;
+    padding: 8px 0 !important;
+  }
+
+  .navbar-collapse .dropdown-item {
+    padding: 12px 18px;
+    border: none !important;
+  }
+
+  .navbar-collapse hr,
+  .navbar-collapse .dropdown-divider {
+    display: none !important;
+    border: none !important;
   }
 
   .navbar .nav-link {
@@ -675,12 +716,6 @@ VIDEOS SECTION
     background-color: rgba(255, 255, 255, 0.2);
   }
 
-  .navbar-nav {
-    text-align: left;
-    padding-top: 0;
-    padding-bottom: 0;
-  }
-
   .navbar-brand {
     display: flex;
     align-items: center;
@@ -688,5 +723,36 @@ VIDEOS SECTION
 
   .navbar-logo {
     height: 51px;
+  }
+
+  /* Temporary debugging */
+
+  .navbar-collapse,
+  .navbar-collapse.show,
+  .navbar-collapse.collapsing,
+  .navbar-nav,
+  .nav-item,
+  .nav-link,
+  .dropdown,
+  .dropdown-menu,
+  .dropdown-item {
+    border: none !important;
+    outline: none !important;
+    box-shadow: none !important;
+  }
+
+  .nav-item::before,
+  .nav-item::after,
+  .nav-link::before,
+  .nav-link::after,
+  .dropdown::before,
+  .dropdown::after {
+    display: none !important;
+  }
+
+  .navbar .dropdown-toggle::after {
+    display: inline-block !important;
+    margin-left: 0.4rem;
+    vertical-align: middle;
   }
 }

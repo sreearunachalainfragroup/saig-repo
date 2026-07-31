@@ -2,7 +2,7 @@ function initNavbarScroll() {
     const navbar = document.querySelector('.custom-navbar');
 
     if (!navbar) return;
-    
+
     window.addEventListener("scroll", function () {
         if (window.scrollY > 50) {
             navbar.classList.add("navbar-scrolled");
@@ -29,24 +29,40 @@ function initNavbarAutoClose() {
         toggle: false
     });
 
-    // Close when clicking outside
+    // Close the main menu when clicking outside it
     document.addEventListener("click", function (e) {
+
+        const clickedInsideMenu = navbarCollapse.contains(e.target);
+        const clickedToggler = navbarToggler.contains(e.target);
+
         if (
             navbarCollapse.classList.contains("show") &&
-            !navbarCollapse.contains(e.target) &&
-            !navbarToggler.contains(e.target)
+            !clickedInsideMenu &&
+            !clickedToggler
         ) {
             bsCollapse.hide();
         }
     });
 
-    // Close after clicking a menu item
-    document.querySelectorAll(".navbar-nav .nav-link, .navbar-nav .dropdown-item")
+    // Close only when an actual page link is clicked
+    document
+        .querySelectorAll(".navbar-nav .nav-link:not(.dropdown-toggle), .dropdown-item")
         .forEach(item => {
-            item.addEventListener("click", () => {
-                bsCollapse.hide();
+
+            item.addEventListener("click", function () {
+
+                setTimeout(() => {
+                    bsCollapse.hide();
+                }, 100);
             });
         });
+
+    // Close the menu when the page is scrolled
+    window.addEventListener("scroll", function () {
+        if (navbarCollapse.classList.contains("show")) {
+            bsCollapse.hide();
+        }
+    }, { passive: true });
 }
 
 function loadNavbarAndFooter() {
@@ -58,7 +74,7 @@ function loadNavbarAndFooter() {
         .then(data => {
             navbarContainer.innerHTML = data;
             initNavbarScroll();
-            initDropdowns();
+            //initDropdowns();
             initNavbarAutoClose();
         });
     // Load Footer
@@ -120,6 +136,7 @@ document.addEventListener("DOMContentLoaded", () => {
         });
 
     });
+
 });
 
 
