@@ -69,12 +69,26 @@ function loadNavbarAndFooter() {
     // Load Navbar
     const navbarContainer = document.getElementById('navbar');
     navbarContainer.innerHTML = '';
+
     fetch('navbar.html')
         .then(response => response.text())
         .then(data => {
+
             navbarContainer.innerHTML = data;
+
+            document.querySelectorAll(".navbar-logo").forEach(img => {
+
+                img.addEventListener("contextmenu", function (e) {
+                    e.preventDefault();
+                });
+
+                img.addEventListener("dragstart", function (e) {
+                    e.preventDefault();
+                });
+
+            });
+
             initNavbarScroll();
-            //initDropdowns();
             initNavbarAutoClose();
         });
     // Load Footer
@@ -136,6 +150,20 @@ document.addEventListener("DOMContentLoaded", () => {
         });
 
     });
+
+    document
+        .querySelectorAll(".project-details img, .project-details i")
+        .forEach(element => {
+
+            element.addEventListener("contextmenu", function (e) {
+                e.preventDefault();
+            });
+
+            element.addEventListener("dragstart", function (e) {
+                e.preventDefault();
+            });
+
+        });
 
 });
 

@@ -566,11 +566,23 @@ VIDEOS SECTION
   -webkit-user-drag: none;
 }
 
+/* Project details page */
+
+.project-details img,
+.project-details i {
+  user-select: none;
+  -webkit-user-drag: none;
+  -webkit-touch-callout: none;
+}
+
 /* Desktop */
 .navbar-logo {
   height: 70px;
   width: auto;
   display: block;
+  user-select: none;
+  -webkit-user-drag: none;
+  -webkit-touch-callout: none;
 }
 
 /* ==========================================

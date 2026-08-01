@@ -49,7 +49,7 @@ async function loadProjects() {
 
         console.error("Projects Error:", err);
 
-        alert(err);
+        // alert(err);
 
         if (loading) {
             loading.innerHTML = `
