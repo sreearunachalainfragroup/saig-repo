@@ -42,6 +42,10 @@ async function loadGallery() {
         const response =
             await fetch(`${GALLERY_API}?action=gallery&key=${API_KEY}`);
 
+        if (!response.ok) {
+            throw new Error(`HTTP error: ${response.status}`);
+        }
+
         const data = await response.json();
 
         let gallery = data.gallery || [];
