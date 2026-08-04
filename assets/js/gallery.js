@@ -34,19 +34,60 @@ function getImageUrl(url) {
 
 async function loadGallery() {
 
+    // console.log("API_BASE:", API_BASE);
+    // console.log("API_KEY:", API_KEY);
+    // console.log(
+    //     `${GALLERY_API}?action=gallery&key=${API_KEY}`
+    // );
+
     const loading = document.getElementById("galleryLoading");
     const content = document.getElementById("galleryContent");
 
     try {
 
-        const response =
-            await fetch(`${GALLERY_API}?action=gallery&key=${API_KEY}`);
+        const url =
+            `${GALLERY_API}?action=gallery&key=${API_KEY}&t=${Date.now()}`;
 
+        const response = await fetch(url, {
+            method: "GET",
+            cache: "no-store"
+        });
+
+        // console.log("Status:", response.status);
+        // console.log("Response URL:", response.url);
+        // console.log("Redirected:", response.redirected);
+
+        // Check HTTP status
         if (!response.ok) {
             throw new Error(`HTTP error: ${response.status}`);
         }
 
-        const data = await response.json();
+        // Check content type
+        const contentType = response.headers.get("content-type");
+
+        if (
+            !contentType ||
+            !contentType.includes("application/json")
+        ) {
+
+            const errorText = await response.text();
+
+            console.error("Unexpected response:", errorText);
+
+            throw new Error(
+                "Server returned HTML instead of JSON."
+            );
+        }
+
+        // Read response as text first
+        const text = await response.text();
+
+        if (text.startsWith("<!DOCTYPE")) {
+            throw new Error("HTML returned instead of JSON.");
+        }
+
+        // Convert text into JSON
+        const data = JSON.parse(text);
 
         let gallery = data.gallery || [];
 
@@ -54,44 +95,42 @@ async function loadGallery() {
             img => img.showOnWebsite === "Yes"
         );
 
-        if (loading)
+        if (loading) {
             loading.style.display = "none";
+        }
 
-        if (content)
+        if (content) {
             content.style.display = "block";
+        }
 
         renderGallery(gallery);
 
-    }
-    catch (err) {
+    } catch (err) {
 
-        console.error(err);
+        console.error("Gallery loading error:", err);
 
         if (loading) {
 
             loading.innerHTML = `
-                <div class="text-center py-5">
+            <div class="text-center py-5">
 
-                    <i class="bi bi-images"
-                       style="font-size:3rem;color:var(--saig-logo-brown-dark);">
-                    </i>
+                <i class="bi bi-images"
+                    style="font-size:3rem;
+                    color:var(--saig-logo-brown-dark);">
+                </i>
 
-                    <h4 class="custom-font-headings custom-font-bold mt-3">
-                        Gallery will be available soon
-                    </h4>
+                <h4 class="custom-font-headings custom-font-bold mt-3">
+                    Gallery will be available soon
+                </h4>
 
-                    <p class="custom-font-paras">
-                        Stay tuned for latest moments from
-                        Sree Arunachala Infra Group.
-                    </p>
+                <p class="custom-font-paras">
+                    Please refresh the page and try again.
+                </p>
 
-                </div>
-            `;
-
+            </div>
+        `;
         }
-
     }
-
 }
 
 function renderGallery(images) {
