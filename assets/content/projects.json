@@ -1,0 +1,35 @@
+[
+  {
+    "ID": "1",
+    "Status": "Ongoing",
+    "Project": "Solaris Meadows",
+    "Title": "Solaris Meadows",
+    "Subtitle": "FCDA Approved Villa Plots @ Kadthal in Bharat Future City",
+    "Image": "assets/img/saig-card-openplot.jpg",
+    "Project Page": "projects-ongoing-solarismeadows-detail.html",
+    "Display Order": "1",
+    "ShowOnWebsite": "Yes"
+  },
+  {
+    "ID": "2",
+    "Status": "Ongoing",
+    "Project": "Ameya Enclave",
+    "Title": "Ameya Enclave",
+    "Subtitle": "HMDA Approved Villa Plots @ Mangalpalle",
+    "Image": "assets/img/saig-card-openplot.jpg",
+    "Project Page": "projects-ongoing-ameyaenclave-detail.html",
+    "Display Order": "2",
+    "ShowOnWebsite": "No"
+  },
+  {
+    "ID": "2",
+    "Status": "Completed",
+    "Project": "IconCity",
+    "Title": "IconCity",
+    "Subtitle": "HMDA Approved Villa Plots @ Kongarakalan",
+    "Image": "assets/img/saig-card-openplot.jpg",
+    "Project Page": "projects-ongoing-ameyaenclave-detail.html",
+    "Display Order": "3",
+    "ShowOnWebsite": "No"
+  }
+]

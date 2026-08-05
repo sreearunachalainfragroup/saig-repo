@@ -65,58 +65,65 @@ function initNavbarAutoClose() {
     }, { passive: true });
 }
 
-function loadNavbarAndFooter() {
-    // Load Navbar
-    const navbarContainer = document.getElementById('navbar');
-    navbarContainer.innerHTML = '';
+async function loadNavbarAndFooter() {
 
-    fetch('navbar.html')
-        .then(response => response.text())
-        .then(data => {
+    console.log("loadNavbarAndFooter");
 
-            navbarContainer.innerHTML = data;
+    // ---------------- Navbar ----------------
 
-            document.querySelectorAll(".navbar-logo").forEach(img => {
+    const navbarContainer = document.getElementById("navbar");
 
-                img.addEventListener("contextmenu", function (e) {
-                    e.preventDefault();
-                });
+    if (navbarContainer) {
 
-                img.addEventListener("dragstart", function (e) {
-                    e.preventDefault();
-                });
+        navbarContainer.innerHTML = "";
 
+        const response = await fetch("navbar.html");
+        navbarContainer.innerHTML = await response.text();
+
+        document.querySelectorAll(".navbar-logo").forEach(img => {
+
+            img.addEventListener("contextmenu", e => {
+                e.preventDefault();
             });
 
-            initNavbarScroll();
-            initNavbarAutoClose();
-        });
-    // Load Footer
-    const footerContainer = document.getElementById('footer');
-    footerContainer.innerHTML = '';
-    fetch('footer.html')
-        .then(response => response.text())
-        .then(data => {
-            footerContainer.innerHTML = data;
+            img.addEventListener("dragstart", e => {
+                e.preventDefault();
+            });
+
         });
 
-    // Load Videos (Home page only)
+        initNavbarScroll();
+        initNavbarAutoClose();
+    }
+
+    // ---------------- Footer ----------------
+
+    const footerContainer = document.getElementById("footer");
+
+    if (footerContainer) {
+
+        footerContainer.innerHTML = "";
+
+        const response = await fetch("footer.html");
+        footerContainer.innerHTML = await response.text();
+    }
+
+    const tasks = [];
+
     if (
         document.getElementById("videosContainer") &&
         typeof loadVideos === "function"
     ) {
-        loadVideos();
+        tasks.push(loadVideos());
     }
 
-    // Load Gallery
     if (
         document.getElementById("galleryLoading") &&
         typeof loadGallery === "function"
     ) {
-        loadGallery();
+        tasks.push(loadGallery());
     }
 
-    // Load Projects (Home & Projects page)
     if (
         (
             document.getElementById("ongoingSection") ||
@@ -124,13 +131,14 @@ function loadNavbarAndFooter() {
         ) &&
         typeof loadProjects === "function"
     ) {
-        loadProjects();
+        tasks.push(loadProjects());
     }
 
+    await Promise.all(tasks);
 }
 
-document.addEventListener("DOMContentLoaded", () => {
-    loadNavbarAndFooter();
+document.addEventListener("DOMContentLoaded", async () => {
+    await loadNavbarAndFooter();
     const videoModal = document.getElementById("videoModal");
     if (videoModal) {
         videoModal.addEventListener("hidden.bs.modal", function () {

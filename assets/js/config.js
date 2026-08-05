@@ -9,3 +9,5 @@
 const API_BASE =
     "https://script.google.com/macros/s/AKfycbyX99hgUWci8BKKfBNThqVGvNLcm5GmuFxOXQJ2xxrsFY9vA6Q_H30zPjhtMQ6sHyowCQ/exec"
 const API_KEY = "SAIG_4hP9LmQ7xY82RkNc61";
+
+const DATA_PATH = "assets/content";

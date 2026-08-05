@@ -1,0 +1,38 @@
+[
+  {
+    "SNo": "1",
+    "Category": "Corporate",
+    "Project": "General",
+    "Title": "Office Inauguration Ceremony",
+    "PageDescription": "Office Inauguration Ceremony",
+    "Description": "A glimpse of our office inauguration held at our Hyderabad office.",
+    "YouTubeURL": "https://www.youtube.com/watch?v=6tRc8e_m39o",
+    "DisplayOrder": "1",
+    "Active": "Yes",
+    "ShowOnHome": "Yes"
+  },
+  {
+    "SNo": "2",
+    "Category": "Projects",
+    "Project": "Solaris Meadows",
+    "Title": "Project Walkthrough",
+    "PageDescription": "Explore our FCDA-approved plotted development through walkthroughs, drone views, location highlights and project updates.",
+    "Description": "Take a complete walkthrough of Solaris Meadows and explore the premium plotted development.",
+    "YouTubeURL": "https://youtube.com/shorts/kfl2_os1Jg4?si=kMVYR2U0982dCzpF",
+    "DisplayOrder": "2",
+    "Active": "Yes",
+    "ShowOnHome": "Yes"
+  },
+  {
+    "SNo": "3",
+    "Category": "Projects",
+    "Project": "Solaris Meadows",
+    "Title": "Drone View",
+    "PageDescription": "",
+    "Description": "Enjoy an aerial view of the entire venture and surrounding developments.",
+    "YouTubeURL": "",
+    "DisplayOrder": "3",
+    "Active": "Yes",
+    "ShowOnHome": "No"
+  }
+]

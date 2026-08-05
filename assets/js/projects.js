@@ -1,17 +1,26 @@
-const PROJECT_API = API_BASE;
+const PROJECT_API = `${DATA_PATH}/projects.json`;
 
 async function loadProjects() {
-    // console.log("PROJECT_API =", PROJECT_API);
+
+    console.log("loadProjects");
 
     const loading = document.getElementById("projectsLoading");
     const content = document.getElementById("projectsContent");
 
     try {
 
-        const response = await fetch(`${PROJECT_API}?action=projects&key=${API_KEY}`);
-        const data = await response.json();
+        const data = await fetchJson(PROJECT_API);
 
-        let projects = data.projects || [];
+        let projects = data.map(item => ({
+            status: item.Status,
+            project: item.Project,
+            title: item.Title,
+            subtitle: item.Subtitle,
+            image: item.Image,
+            page: item["Project Page"],
+            displayOrder: item["Display Order"],
+            showOnWebsite: item.ShowOnWebsite
+        }));
 
         // Show only active projects
         projects = projects.filter(
@@ -254,7 +263,7 @@ function renderProjectsPage(projects) {
         html += `
         <div class="project-category mb-5">
 
-            <h3 class="text-center custom-font-large custom-font-bold mt-3 mb-5">
+            <h3 class="text-center custom-font-large custom-font-bold mb-5">
                 ONGOING
             </h3>
         `;

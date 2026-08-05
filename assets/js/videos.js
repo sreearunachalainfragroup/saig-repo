@@ -1,4 +1,5 @@
-const VIDEO_API = API_BASE;
+const VIDEO_API = `${DATA_PATH}/videos.json`;
+
 
 function getNoVideosHtml(title = "Videos will be available soon") {
 
@@ -24,15 +25,28 @@ function getNoVideosHtml(title = "Videos will be available soon") {
 
 async function loadVideos() {
 
+    console.log("loadVideos");
+
+    const loading = document.getElementById("videosLoading");
+    const content = document.getElementById("videosContent");
+
     try {
 
-        const response = await fetch(`${VIDEO_API}?action=videos&key=${API_KEY}`);
-        const data = await response.json();
+        const data = await fetchJson(VIDEO_API);
 
-        let videos = data.videos || [];
+        let videos = data.map(item => ({
+            category: item.Category,
+            project: item.Project,
+            title: item.Title,
+            pageDescription: item.PageDescription,
+            description: item.Description,
+            youtubeUrl: item.YouTubeURL,
+            displayOrder: item.DisplayOrder,
+            active: item.Active,
+            showOnHome: item.ShowOnHome
+        }));
 
-        const loading = document.getElementById("videosLoading");
-        const content = document.getElementById("videosContent");
+        // let videos = data || [];
 
         const container = document.getElementById("videosContainer");
         if (!container) return;

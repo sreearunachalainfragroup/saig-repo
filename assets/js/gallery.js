@@ -1,4 +1,4 @@
-const GALLERY_API = API_BASE;
+const GALLERY_API = `${DATA_PATH}/gallery.json`;
 
 function getImageUrl(url) {
 
@@ -34,62 +34,23 @@ function getImageUrl(url) {
 
 async function loadGallery() {
 
-    // console.log("API_BASE:", API_BASE);
-    // console.log("API_KEY:", API_KEY);
-    // console.log(
-    //     `${GALLERY_API}?action=gallery&key=${API_KEY}`
-    // );
+    console.log("loadGallery");
 
     const loading = document.getElementById("galleryLoading");
     const content = document.getElementById("galleryContent");
 
     try {
 
-        const url =
-            `${GALLERY_API}?action=gallery&key=${API_KEY}&t=${Date.now()}`;
+        const data = await fetchJson(GALLERY_API);
 
-        const response = await fetch(url, {
-            method: "GET",
-            cache: "no-store"
-        });
-
-        // console.log("Status:", response.status);
-        // console.log("Response URL:", response.url);
-        // console.log("Redirected:", response.redirected);
-
-        // Check HTTP status
-        if (!response.ok) {
-            throw new Error(`HTTP error: ${response.status}`);
-        }
-
-        // Check content type
-        const contentType = response.headers.get("content-type");
-
-        if (
-            !contentType ||
-            !contentType.includes("application/json")
-        ) {
-
-            const errorText = await response.text();
-
-            console.error("Unexpected response:", errorText);
-
-            throw new Error(
-                "Server returned HTML instead of JSON."
-            );
-        }
-
-        // Read response as text first
-        const text = await response.text();
-
-        if (text.startsWith("<!DOCTYPE")) {
-            throw new Error("HTML returned instead of JSON.");
-        }
-
-        // Convert text into JSON
-        const data = JSON.parse(text);
-
-        let gallery = data.gallery || [];
+        let gallery = data.map(item => ({
+            displayOrder: item.DisplayOrder,
+            category: item.Category,
+            title: item.Title,
+            image: item.Image,
+            status: item.Status,
+            showOnWebsite: item.showOnWebsite
+        }));
 
         gallery = gallery.filter(
             img => img.showOnWebsite === "Yes"
@@ -197,7 +158,7 @@ function renderGallery(images) {
         );
 
         html += `
-        <h1 class="custom-font-headings custom-font-bold text-center mt-5 mb-4">
+        <h1 class="custom-font-headings custom-font-bold text-center mt-2 mb-4">
             ${category}
         </h1>
 
@@ -241,6 +202,10 @@ function initGalleryModal() {
 
     const modalImage =
         document.getElementById("modalImage");
+
+    if (!modalImage) {
+        return;
+    }
 
     // Disable right-click on modal image
     modalImage.addEventListener("contextmenu", function (e) {
