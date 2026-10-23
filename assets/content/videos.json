@@ -15,16 +15,28 @@
     "SNo": "2",
     "Category": "Projects",
     "Project": "Solaris Meadows",
+    "Title": "Project Development Progress",
+    "PageDescription": "Watch the development progress of Solaris Meadows, an FCDA and RERA-approved plotted development at Kadthal, near Bharat Future City. Explore the on-ground infrastructure works and the progress taking shape at our project site.",
+    "Description": "A closer look at the ongoing development works at Solaris Meadows, Kadthal. Witness the progress as we work towards creating a promising plotted development near Bharat Future City.",
+    "YouTubeURL": "https://youtu.be/m5Aj2ikWYAk",
+    "DisplayOrder": "2",
+    "Active": "Yes",
+    "ShowOnHome": "Yes"
+  },
+  {
+    "SNo": "3",
+    "Category": "Projects",
+    "Project": "Solaris Meadows",
     "Title": "Project Walkthrough",
     "PageDescription": "Explore our FCDA-approved plotted development through walkthroughs, drone views, location highlights and project updates.",
     "Description": "Take a complete walkthrough of Solaris Meadows and explore the premium plotted development.",
     "YouTubeURL": "https://youtube.com/shorts/kfl2_os1Jg4?si=kMVYR2U0982dCzpF",
     "DisplayOrder": "2",
-    "Active": "Yes",
+    "Active": "No",
     "ShowOnHome": "No"
   },
   {
-    "SNo": "3",
+    "SNo": "4",
     "Category": "Projects",
     "Project": "Solaris Meadows",
     "Title": "Drone View",
@@ -32,7 +44,7 @@
     "Description": "Enjoy an aerial view of the entire venture and surrounding developments.",
     "YouTubeURL": "",
     "DisplayOrder": "3",
-    "Active": "Yes",
+    "Active": "No",
     "ShowOnHome": "No"
   }
 ]
